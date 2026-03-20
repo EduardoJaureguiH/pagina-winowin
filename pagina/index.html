@@ -7,6 +7,70 @@
 	<meta name="description" content="Servicios del hogar en Madrid: fontanería, electricidad, pintura, reformas, climatización y jardín. Presupuesto gratuito y respuesta en menos de 2 horas.">
 	<meta name="robots" content="index, follow">
 	<link rel="stylesheet" href="styleProto2.css">
+	<style>
+		.cookie-banner {
+			position: fixed;
+			left: 16px;
+			right: 16px;
+			bottom: 16px;
+			z-index: 1200;
+			max-width: 920px;
+			margin: 0 auto;
+			background: #111827;
+			color: #ffffff;
+			border: 1px solid #374151;
+			border-radius: 10px;
+			padding: 14px 16px;
+			box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+			display: none;
+			gap: 12px;
+			align-items: center;
+			justify-content: space-between;
+		}
+
+		.cookie-banner.is-visible {
+			display: flex;
+		}
+
+		.cookie-banner p {
+			margin: 0;
+			font-size: 0.9rem;
+			line-height: 1.45;
+			color: #e5e7eb;
+		}
+
+		.cookie-banner p a {
+			text-decoration: underline;
+		}
+
+		.cookie-actions {
+			display: flex;
+			gap: 8px;
+			flex-wrap: wrap;
+		}
+
+		.cookie-actions button {
+			border: 1px solid #4b5563;
+			background: #1f2937;
+			color: #ffffff;
+			padding: 8px 12px;
+			border-radius: 6px;
+			font-weight: 700;
+			cursor: pointer;
+		}
+
+		.cookie-actions .cookie-accept {
+			background: #16a34a;
+			border-color: #16a34a;
+		}
+
+		@media (max-width: 640px) {
+			.cookie-banner {
+				flex-direction: column;
+				align-items: flex-start;
+			}
+		}
+	</style>
 </head>
 <body>
 
@@ -323,7 +387,47 @@
 		</div>
 	</footer>
 
+	<div id="cookieBanner" class="cookie-banner" role="dialog" aria-live="polite" aria-label="Aviso de cookies">
+		<p>Usamos cookies para mejorar tu experiencia. Puedes aceptar o rechazar las cookies no esenciales. <a href="#">Política de cookies</a>.</p>
+		<div class="cookie-actions">
+			<button type="button" id="rejectCookies">Rechazar</button>
+			<button type="button" id="acceptCookies" class="cookie-accept">Aceptar cookies</button>
+		</div>
+	</div>
+
 	<script src="js/anime.iife.min.js"></script>
 	<script src="js/scriptProto2.js"></script>
+	<script>
+		(function () {
+			var key = "msp_cookie_consent";
+			var banner = document.getElementById("cookieBanner");
+			if (!banner) return;
+
+			var acceptBtn = document.getElementById("acceptCookies");
+			var rejectBtn = document.getElementById("rejectCookies");
+			var saved = localStorage.getItem(key);
+
+			if (!saved) {
+				banner.classList.add("is-visible");
+			}
+
+			function saveConsent(value) {
+				localStorage.setItem(key, value);
+				banner.classList.remove("is-visible");
+			}
+
+			if (acceptBtn) {
+				acceptBtn.addEventListener("click", function () {
+					saveConsent("accepted");
+				});
+			}
+
+			if (rejectBtn) {
+				rejectBtn.addEventListener("click", function () {
+					saveConsent("rejected");
+				});
+			}
+		})();
+	</script>
 </body>
 </html>

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enchufes e interruptores - MultiServicios Pro</title>
+    <meta name="description" content="Solicita presupuesto para enchufes e interruptores con MultiServicios Pro.">
+    <link rel="stylesheet" href="../styleProto2.css">
+    <style>
+        .detalle-hero {
+            margin-top: 20px;
+            border-radius: var(--radio);
+            overflow: hidden;
+            min-height: 250px;
+            display: grid;
+            place-content: end start;
+            padding: 28px;
+            color: #fff;
+            background-image: linear-gradient(145deg, rgba(12, 18, 32, 0.72), rgba(12, 18, 32, 0.38)), url('img/enchufes.jpeg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .detalle-back {
+            display: inline-block;
+            margin-top: 14px;
+            font-weight: 700;
+            color: var(--svc-accent);
+        }
+
+        .trust-strip {
+            margin-top: 16px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .trust-item {
+            background: #ffffff;
+            border: 1px solid var(--gris-borde);
+            border-radius: var(--radio);
+            padding: 10px 12px;
+            font-size: 0.84rem;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .form-wrap {
+            margin-top: 16px;
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 16px;
+        }
+
+        .subtipo-wrap {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+
+        .chip-subtipo {
+            border: 1px solid var(--gris-borde);
+            background: #fff;
+            color: var(--gris-oscuro);
+            border-radius: 999px;
+            padding: 8px 12px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .chip-subtipo.is-active {
+            border-color: var(--svc-accent);
+            background: color-mix(in srgb, var(--svc-accent) 14%, white);
+            color: var(--svc-accent);
+        }
+
+        .calc-mini {
+            margin-top: 14px;
+            border: 1px solid var(--gris-borde);
+            border-radius: var(--radio);
+            padding: 14px;
+            background: #ffffff;
+        }
+
+        .calc-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .calc-result {
+            margin-top: 12px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            text-align: center;
+        }
+
+        .calc-result strong { display: block; font-size: 1.08rem; }
+        .calc-result small { font-size: 0.76rem; color: var(--gris-medio); }
+
+        .calc-barra-wrap { margin-top: 10px; }
+        .calc-barra-track {
+            width: 100%;
+            height: 8px;
+            border-radius: 999px;
+            background: #e5e7eb;
+            overflow: hidden;
+        }
+
+        .calc-barra-fill {
+            height: 100%;
+            width: 0%;
+            background: var(--svc-accent);
+            transition: width 0.3s ease;
+        }
+
+        .calc-barra-label { display: block; margin-top: 6px; font-size: 0.76rem; color: var(--gris-medio); }
+
+        .aside-card {
+            border: 1px solid var(--gris-borde);
+            border-radius: var(--radio);
+            background: #fff;
+            padding: 16px;
+            height: fit-content;
+        }
+
+        .btn-llamada {
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            border-radius: var(--radio);
+            padding: 12px;
+            background: var(--svc-accent);
+            color: #fff;
+            font-weight: 800;
+        }
+
+        .resumen-box {
+            margin-top: 12px;
+            padding: 10px 12px;
+            border-radius: var(--radio);
+            border: 1px dashed var(--gris-borde);
+            font-size: 0.88rem;
+            background: #fff;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: color-mix(in srgb, var(--svc-accent) 70%, transparent);
+            border: 1px solid color-mix(in srgb, var(--svc-accent) 84%, white);
+            color: #ffffff;
+            font-size: 0.78rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+        }
+
+        .detalle-hero h1 {
+            color: var(--svc-accent-soft);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
+        }
+
+        @media (max-width: 980px) {
+            .trust-strip { grid-template-columns: 1fr 1fr; }
+            .form-wrap { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body class="service-page service-electricidad">
+    <main class="container">
+        <div class="detalle-topbar">
+            <a href="../index.html" class="logo detalle-logo">MULTI<span>SERVICIOS</span><em>PRO</em></a>
+        </div>
+        <a class="detalle-back" href="electricidad.html">Volver a Electricidad</a>
+        <button type="button" class="btn-tema" id="toggleTemaGlobal" aria-pressed="false">Usar estilo oscuro</button>
+
+        <section class="detalle-hero">
+            <div>
+                <p class="hero-tag">Solicitud especifica</p>
+                <h1>Enchufes e interruptores</h1>
+                <p>Instalacion y sustitucion de mecanismos electricos con acabado limpio y seguro.</p>
+            </div>
+        </section>
+
+        <section class="trust-strip" aria-label="Indicadores de confianza">
+            <article class="trust-item">Respuesta en menos de 2 horas</article>
+            <article class="trust-item">Presupuesto sin compromiso</article>
+            <article class="trust-item">Tecnicos certificados</article>
+            <article class="trust-item">Garantia por escrito</article>
+        </section>
+
+        <section id="contacto" class="section contacto-section">
+            <div class="form-wrap">
+                <div>
+                    <form id="contactoForm" class="contacto-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="nombre">Nombre *</label>
+                                <input type="text" id="nombre" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="telefono">Telefono *</label>
+                                <input type="tel" id="telefono" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="zona">Zona *</label>
+                                <input type="text" id="zona" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="urgencia">Urgencia</label>
+                                <select id="urgencia">
+                                    <option value="1">Normal</option>
+                                    <option value="1.2">Esta semana</option>
+                                    <option value="1.45">Urgente 24h</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Subtipo del trabajo</label>
+                            <div class="subtipo-wrap" id="subtipoWrap">
+                                <button type='button' class='chip-subtipo' data-factor='1' data-value='1 punto'>1 punto</button>
+                            <button type='button' class='chip-subtipo' data-factor='1.13' data-value='2-4 puntos'>2-4 puntos</button>
+                            <button type='button' class='chip-subtipo' data-factor='1.25' data-value='Varias estancias'>Varias estancias</button>
+                            <button type='button' class='chip-subtipo' data-factor='1.4' data-value='Con rozas'>Con rozas</button>
+                            </div>
+                        </div>
+
+                        <div class="calc-mini">
+                            <h3>Calculadora orientativa</h3>
+                            <div class="calc-grid">
+                                <div class="form-group">
+                                    <label for="alcance">Alcance</label>
+                                    <select id="alcance">
+                                        <option value="1">Puntual</option>
+                                        <option value="1.25">Medio</option>
+                                        <option value="1.55">Amplio</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="materiales">Materiales</label>
+                                    <select id="materiales">
+                                        <option value="0.95">Basicos</option>
+                                        <option value="1">Estandar</option>
+                                        <option value="1.25">Premium</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="calc-result">
+                                <div><small>Minimo</small><strong id="calcMin">-</strong></div>
+                                <div><small>Estimado</small><strong id="calcEst">-</strong></div>
+                                <div><small>Maximo</small><strong id="calcMax">-</strong></div>
+                            </div>
+
+                            <div class="calc-barra-wrap">
+                                <div class="calc-barra-track"><div id="calcBarra" class="calc-barra-fill"></div></div>
+                                <span id="calcBarraLabel" class="calc-barra-label">Selecciona opciones para calcular.</span>
+                            </div>
+                        </div>
+
+                        <div id="resumenBox" class="resumen-box">Resumen pendiente de completar.</div>
+
+                        <button type="submit" class="btn-submit">Enviar solicitud gratuita</button>
+                    </form>
+                </div>
+
+                <aside class="aside-card">
+                    <h3>Llamada urgente</h3>
+                    <p>Si necesitas asistencia inmediata, te atendemos ahora mismo.</p>
+                    <a class="btn-llamada" href="tel:+34900000000">Llamar ahora</a>
+                </aside>
+            </div>
+        </section>
+    </main>
+
+    <script>
+    (function () {
+        var BASE = 55;
+        var urgencia = document.getElementById('urgencia');
+        var alcance = document.getElementById('alcance');
+        var materiales = document.getElementById('materiales');
+        var chips = Array.prototype.slice.call(document.querySelectorAll('.chip-subtipo'));
+        var calcMin = document.getElementById('calcMin');
+        var calcEst = document.getElementById('calcEst');
+        var calcMax = document.getElementById('calcMax');
+        var calcBarra = document.getElementById('calcBarra');
+        var calcBarraLabel = document.getElementById('calcBarraLabel');
+        var resumenBox = document.getElementById('resumenBox');
+        var subtipoFactor = 1;
+        var subtipoNombre = 'No seleccionado';
+
+        function redondearComercial(v) { return Math.max(0, Math.round(v / 10) * 10); }
+        function euro(v) {
+            return redondearComercial(v).toLocaleString('es-ES', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 });
+        }
+
+        function recalcular() {
+            var est = BASE * subtipoFactor * Number(urgencia.value || 1) * Number(alcance.value || 1) * Number(materiales.value || 1);
+            var min = est * 0.85;
+            var max = est * 1.18;
+            calcMin.textContent = euro(min);
+            calcEst.textContent = euro(est);
+            calcMax.textContent = euro(max);
+
+            var ratio = Math.min(100, Math.max(8, Math.round((est / (BASE * 3.4)) * 100)));
+            calcBarra.style.width = ratio + '%';
+            calcBarraLabel.textContent = 'Estimado: ' + euro(est) + ' (' + ratio + '%)';
+            resumenBox.textContent = 'Servicio: ' + (document.querySelector('h1') ? document.querySelector('h1').textContent : 'Servicio') + ' | Subtipo: ' + subtipoNombre + ' | Presupuesto orientativo: ' + euro(est);
+        }
+
+        chips.forEach(function (chip, idx) {
+            chip.addEventListener('click', function () {
+                chips.forEach(function (c) { c.classList.remove('is-active'); });
+                chip.classList.add('is-active');
+                subtipoFactor = Number(chip.getAttribute('data-factor') || 1);
+                subtipoNombre = chip.getAttribute('data-value') || chip.textContent.trim();
+                recalcular();
+            });
+            if (idx === 0) { chip.click(); }
+        });
+
+        [urgencia, alcance, materiales].forEach(function (el) {
+            el.addEventListener('change', recalcular);
+        });
+
+        document.getElementById('contactoForm').addEventListener('submit', function (ev) {
+            ev.preventDefault();
+            alert('Solicitud enviada. Te contactaremos en breve.');
+        });
+    })();
+    </script>
+    <script src="../js/toggleTema.js"></script>
+</body>
+</html>
